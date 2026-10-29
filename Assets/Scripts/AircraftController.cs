@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class AircraftController : MonoBehaviour
 {
-    public float forwardSpeed=5f;
-    public float mouseSensitivity=0.03f;
+    public float forwardSpeed=8f;
+    public float mouseSensitivity=0.08f;
+    public bool isCrashed = false;
 
     private Vector3 lastMousePosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +16,9 @@ public class AircraftController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isCrashed){
+            return;
+        }    
         transform.Translate(
             Vector3.forward * forwardSpeed * Time.deltaTime,
             Space.World
